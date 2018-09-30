@@ -17,7 +17,7 @@ allprojects {
 Add the dependency:
 ```groovy
 dependencies {
-	implementation 'com.github.Queatz:Android-UX-Extras-Slide-Screen:0.1'
+	implementation 'com.github.Queatz:Android-UX-Extras-Slide-Screen:0.1.1'
 }
 ```
 In your XML layout:
