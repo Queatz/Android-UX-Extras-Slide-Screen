@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
  * Created by jacob on 10/19/14.
  */
 public class SlideScreen extends ViewGroup {
+
     private static class SlideAsChild {
         private int position;
         private Fragment fragment;
@@ -39,6 +40,7 @@ public class SlideScreen extends ViewGroup {
     private ExposeAnimation exposeAnimation;
     private float flingDeltaX;
     private float downX, downY;
+    private float startOffset;
     private boolean isSnatched, isUnsnatchable;
     private boolean childIsUsingMotion;
     private int slopRadius;
@@ -191,7 +193,7 @@ public class SlideScreen extends ViewGroup {
 
             view.setVisibility(
                     (child.position < fr - expfrto) ||
-                            (child.position > ( offset == 0 ? fr : to) + expfrto) ?
+                            (child.position > (offset == 0 ? fr : to) + expfrto) ?
                             View.GONE :
                             View.VISIBLE
             );
@@ -237,11 +239,7 @@ public class SlideScreen extends ViewGroup {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float xdiff = 0;
-
-        if(event.getHistorySize() > 0) {
-            xdiff = event.getX() - event.getHistoricalX(0);
-        }
+        float xdiff = event.getX() - downX;
 
         switch(event.getAction()) {
             case MotionEvent.ACTION_DOWN:
@@ -250,13 +248,14 @@ public class SlideScreen extends ViewGroup {
 
                 isSnatched = false;
                 isUnsnatchable = false;
+                startOffset = offset;
                 downX = event.getRawX();
                 downY = event.getRawY();
                 flingDeltaX = 0;
                 getParent().requestDisallowInterceptTouchEvent(true);
                 break;
             case MotionEvent.ACTION_MOVE:
-                setOffset(offset - xdiff / getWidth());
+                setOffset(startOffset - xdiff / getWidth());
 
                 if (event.getHistorySize() > 0) {
                     int h = Math.min(10, event.getHistorySize() - 1);
