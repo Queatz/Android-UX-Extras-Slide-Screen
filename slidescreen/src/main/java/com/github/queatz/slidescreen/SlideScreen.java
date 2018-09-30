@@ -313,6 +313,7 @@ public class SlideScreen extends ViewGroup {
                 isUnsnatchable = false;
                 downX = event.getRawX();
                 downY = event.getRawY();
+                startOffset = offset;
                 flingDeltaX = 0;
 
                 break;
