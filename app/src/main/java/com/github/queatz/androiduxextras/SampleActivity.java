@@ -1,9 +1,10 @@
 package com.github.queatz.androiduxextras;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.github.queatz.slidescreen.SlideScreen;
 import com.github.queatz.slidescreen.SlideScreenAdapter;
@@ -36,7 +37,7 @@ public class SampleActivity extends AppCompatActivity {
 
             @Override
             public FragmentManager getFragmentManager() {
-                return SampleActivity.this.getFragmentManager();
+                return SampleActivity.this.getSupportFragmentManager();
             }
         });
     }

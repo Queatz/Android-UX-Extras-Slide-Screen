@@ -1,7 +1,8 @@
 package com.github.queatz.slidescreen;
 
-import android.app.Fragment;
-import android.app.FragmentManager;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 public interface SlideScreenAdapter {
     int getCount();

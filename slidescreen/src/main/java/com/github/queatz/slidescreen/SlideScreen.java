@@ -1,7 +1,5 @@
 package com.github.queatz.slidescreen;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.app.Service;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -10,6 +8,9 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 /**
  * Created by jacob on 10/19/14.
